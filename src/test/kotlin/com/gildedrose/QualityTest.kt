@@ -80,10 +80,11 @@ class QualityTest : BaseTest() {
 
     @Test
     fun givenAgedBrie_whenSellInGreaterOrEqualToZero_shouldIncreaseQualityByNumberOfDays() {
-        (0 until 100).forEach {
+        (0 until 1000).forEach {
             val days = it
+            val sellIn = days
             val initialItemQuality = generateRandomQualityValue()
-            val item = Item("Aged Brie", generateRandomNumber(), initialItemQuality)
+            val item = Item("Aged Brie", sellIn, initialItemQuality)
             val app = GildedRose(arrayOf(item))
 
             app.advanceTimeBy(days)

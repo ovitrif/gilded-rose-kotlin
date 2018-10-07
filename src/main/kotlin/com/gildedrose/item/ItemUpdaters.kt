@@ -5,6 +5,7 @@ import com.gildedrose.Item
 class ItemUpdaters(
         private val map: HashMap<String, ItemUpdater> = hashMapOf(
                 ItemTypes.backstagePasses to BackstagePassesItemUpdater(),
+                ItemTypes.agedBrie to AgedBrieItemUpdater(),
                 ItemTypes.sulfuras to ImmutableItemUpdater())) {
 
     fun updateItem(item: Item) = item.getUpdater().update(item)
