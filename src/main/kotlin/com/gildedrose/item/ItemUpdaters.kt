@@ -9,6 +9,6 @@ class ItemUpdaters(
     fun updateItem(item: Item) = item.getUpdater().update(item)
 
     private fun Item.getUpdater(): ItemUpdater {
-        return map[this.name] ?: ItemUpdater.NULL
+        return map[this.name] ?: DeterioratingItemUpdater()
     }
 }

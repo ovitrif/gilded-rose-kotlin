@@ -7,6 +7,6 @@ interface ItemUpdater {
     fun update(item: Item) = Unit
 
     companion object {
-        val NULL = object : ItemUpdater {}
+        val QUALITY_RANGE = 0..50
     }
 }
