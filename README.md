@@ -1,4 +1,7 @@
+[![Build Status](https://travis-ci.com/ovitrif/gilded-rose-kotlin.svg?branch=master)](https://travis-ci.com/ovitrif/gilded-rose-kotlin)
+
 # Gilded Rose Refactoring Kata
+
 
 ## Build
 - Open project with [IntelliJ IDEA Community edition](https://www.jetbrains.com/idea/download/)
