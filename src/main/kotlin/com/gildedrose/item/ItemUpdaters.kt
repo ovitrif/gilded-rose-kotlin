@@ -3,7 +3,8 @@ package com.gildedrose.item
 import com.gildedrose.Item
 
 class ItemUpdaters(
-        private val map: HashMap<String, ItemUpdater> = hashMapOf()) {
+        private val map: HashMap<String, ItemUpdater> = hashMapOf(
+                ItemTypes.sulfuras to ImmutableItemUpdater())) {
 
     fun updateItem(item: Item) = item.getUpdater().update(item)
 
