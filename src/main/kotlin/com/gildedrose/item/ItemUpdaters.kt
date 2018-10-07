@@ -6,6 +6,7 @@ class ItemUpdaters(
         private val map: HashMap<String, ItemUpdater> = hashMapOf(
                 ItemTypes.backstagePasses to BackstagePassesItemUpdater(),
                 ItemTypes.agedBrie to AgedBrieItemUpdater(),
+                ItemTypes.conjured to ConjuredItemUpdater(),
                 ItemTypes.sulfuras to ImmutableItemUpdater())) {
 
     fun updateItem(item: Item) = item.getUpdater().update(item)

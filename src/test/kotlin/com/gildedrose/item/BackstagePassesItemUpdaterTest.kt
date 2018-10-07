@@ -40,7 +40,7 @@ class BackstagePassesItemUpdaterTest : BaseTest() {
     @Test
     fun update_whenSellInNegativeOrZero_shouldSetQualityToZero() {
         (-100 until 0).forEach { sellIn ->
-            val days = generateRandomNumber()
+            val days = generateRandomNumber() + 1
             val item = Item("Backstage passes to a TAFKAL80ETC concert", sellIn, generateRandomQualityValue())
 
             repeat(days, { updater.update(item) })
