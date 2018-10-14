@@ -33,7 +33,7 @@ class ConjuredItemUpdaterTest : BaseTest() {
 
     @Test
     fun update_afterAnyNumberOfDays_shouldHaveQualityInLimits() {
-        (0 until 100).forEach { days ->
+        for (days in 0 until 100) {
             repeat(days, { updater.update(item) })
 
             assertThat(item.quality).isBetween(0, 50)
@@ -42,7 +42,7 @@ class ConjuredItemUpdaterTest : BaseTest() {
 
     @Test
     fun update_whenSellInIsGreaterThanOrEqualToZero_shouldDegradeQualityByTwiceTheNumberOfDays() {
-        (1 until 100).forEach { sellIn ->
+        for (sellIn in 1 until 100) {
             item = item.copy(sellIn = sellIn)
 
             val days = generateRandomQualityValue() * 2
@@ -57,7 +57,7 @@ class ConjuredItemUpdaterTest : BaseTest() {
 
     @Test
     fun update_whenSellInIsNegative_shouldDegradeQualityByFourTimesTheNumberOfDays() {
-        (-100 until 0).forEach { sellIn ->
+        for (sellIn in -100 until 0) {
             item = Item("Some Conjured Item", sellIn, generateRandomQualityValue())
 
             val days = generateRandomNumber()

@@ -28,7 +28,7 @@ class BackstagePassesItemUpdaterTest : BaseTest() {
 
     @Test
     fun update_afterAnyNumberOfDays_shouldHaveQualityInLimits() {
-        (0 until 100).forEach { days ->
+        for (days in 0 until 100) {
             val item = Item("Backstage passes to a TAFKAL80ETC concert", generateRandomNumber(), generateRandomQualityValue())
 
             repeat(days, { updater.update(item) })
@@ -39,7 +39,7 @@ class BackstagePassesItemUpdaterTest : BaseTest() {
 
     @Test
     fun update_whenSellInNegativeOrZero_shouldSetQualityToZero() {
-        (-100 until 0).forEach { sellIn ->
+        for (sellIn in -100 until 0) {
             val days = generateRandomNumber() + 1
             val item = Item("Backstage passes to a TAFKAL80ETC concert", sellIn, generateRandomQualityValue())
 
@@ -51,7 +51,7 @@ class BackstagePassesItemUpdaterTest : BaseTest() {
 
     @Test
     fun update_whenSellInMoreThanZeroAndLessThanSix_shouldIncreaseQualityByNumberOfDaysMultipliedByThree() {
-        (1 until 6).shuffled().forEach { sellIn ->
+        for (sellIn in 1 until 6) {
             val days = sellIn
             val initialItemQuality = generateRandomQualityValue()
             val item = Item("Backstage passes to a TAFKAL80ETC concert", sellIn, initialItemQuality)
@@ -65,9 +65,8 @@ class BackstagePassesItemUpdaterTest : BaseTest() {
 
     @Test
     fun update_whenSellInMoreThanFiveAndLessThanEleven_shouldIncreaseQualityByNumberOfDaysMultipliedByTwo() {
-        (6 until 11).shuffled().forEach {
-            val sellIn = it
-            val days = sellIn - 6
+        for (sellIn in 6 until 11) {
+            val days = (0..sellIn-6).randomize()
             val initialItemQuality = generateRandomQualityValue()
             val item = Item("Backstage passes to a TAFKAL80ETC concert", sellIn, initialItemQuality)
 
@@ -80,9 +79,8 @@ class BackstagePassesItemUpdaterTest : BaseTest() {
 
     @Test
     fun update_whenSellInMoreThanEleven_shouldIncreaseQualityByNumberOfDays() {
-        (11 until 1000).shuffled().forEach {
-            val sellIn = it
-            val days = sellIn - 11
+        for (sellIn in 11 until 1000) {
+            val days = (0..sellIn - 11).randomize()
             val initialItemQuality = generateRandomQualityValue()
             val item = Item("Backstage passes to a TAFKAL80ETC concert", sellIn, initialItemQuality)
 

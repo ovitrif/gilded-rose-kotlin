@@ -33,7 +33,7 @@ class DeterioratingItemUpdaterTest : BaseTest() {
 
     @Test
     fun update_afterAnyNumberOfDays_shouldHaveQualityInLimits() {
-        (0 until 100).forEach { days ->
+        for (days in 0 until 100) {
             repeat(days, { updater.update(item) })
 
             assertThat(item.quality).isBetween(0, 50)
@@ -42,7 +42,7 @@ class DeterioratingItemUpdaterTest : BaseTest() {
 
     @Test
     fun update_whenSellInIsGreaterThanOrEqualToZero_shouldDegradeQualityByNumberOfDays() {
-        (0 until 100).forEach { sellIn ->
+        for (sellIn in 0 until 100) {
             item = item.copy(sellIn =  sellIn)
 
             val days = generateRandomNumber().coerceAtLeast(0)
@@ -57,7 +57,7 @@ class DeterioratingItemUpdaterTest : BaseTest() {
 
     @Test
     fun update_whenSellInIsNegative_shouldDegradeQualityByTwiceTheNumberOfDays() {
-        (-100 until 0).forEach { sellIn ->
+        for (sellIn in -1-0 until 0) {
             item = item.copy(sellIn = sellIn)
 
             val days = generateRandomNumber().coerceAtLeast(0)

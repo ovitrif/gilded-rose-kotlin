@@ -66,8 +66,8 @@ class QualityTest : BaseTest() {
         items = items.excludeSulfuras()
                 .excludeBackstagePasses()
                 .excludeAgedBrie()
-        val sellIn = (-generateRandomNumber() until 0).shuffled().last()
-        val days = (0 until 100).shuffled().last()
+        val sellIn = (-generateRandomNumber() until 0).randomize()
+        val days = (0 until 100).randomize()
         val item = pickRandomItem(items).copy(sellIn = sellIn)
         val initialItemQuality = item.quality
         val app = GildedRose(arrayOf(item))
@@ -80,9 +80,8 @@ class QualityTest : BaseTest() {
 
     @Test
     fun givenAgedBrie_whenSellInGreaterOrEqualToZero_shouldIncreaseQualityByNumberOfDays() {
-        (0 until 1000).forEach {
-            val days = it
-            val sellIn = days
+        for (sellIn in 0 until 1000) {
+            val days = (0..sellIn).randomize()
             val initialItemQuality = generateRandomQualityValue()
             val item = Item("Aged Brie", sellIn, initialItemQuality)
             val app = GildedRose(arrayOf(item))
@@ -96,9 +95,8 @@ class QualityTest : BaseTest() {
 
     @Test
     fun givenAgedBrie_whenSellInNegative_shouldIncreaseQualityByNumberOfDaysMultipliedByTwo() {
-        (-100 until 0).forEach {
-            val days = -it
-            val sellIn = it
+        for (sellIn in -100 until 0) {
+            val days = (0..-sellIn).randomize()
             val initialItemQuality = generateRandomQualityValue()
             val item = Item("Aged Brie", sellIn, initialItemQuality)
             val app = GildedRose(arrayOf(item))
@@ -113,7 +111,7 @@ class QualityTest : BaseTest() {
     @Test
     fun givenBackstagePasses_whenSellInNegativeOrZero_shouldSetQualityToZero() {
         val days = generateRandomNumber()
-        val sellIn = (-generateRandomNumber()..0).shuffled().last()
+        val sellIn = (-generateRandomNumber()..0).randomize()
         val item = Item("Backstage passes to a TAFKAL80ETC concert", sellIn, generateRandomQualityValue())
         val app = GildedRose(arrayOf(item))
 
@@ -124,8 +122,8 @@ class QualityTest : BaseTest() {
 
     @Test
     fun givenBackstagePasses_whenSellInMoreThanZeroAndLessThanSix_shouldIncreaseQualityByNumberOfDaysMultipliedByThree() {
-        (1 until 6).shuffled().forEach { sellIn ->
-            val days = sellIn
+        for (sellIn in 1 until 6) {
+            val days = (0..sellIn).randomize()
             val initialItemQuality = generateRandomQualityValue()
             val item = Item("Backstage passes to a TAFKAL80ETC concert", sellIn, initialItemQuality)
             val app = GildedRose(arrayOf(item))
@@ -139,8 +137,8 @@ class QualityTest : BaseTest() {
 
     @Test
     fun givenBackstagePasses_whenSellInMoreThanFiveAndLessThanEleven_shouldIncreaseQualityByNumberOfDaysMultipliedByTwo() {
-        (6 until 11).shuffled().forEach { sellIn ->
-            val days = sellIn - 6
+        for (sellIn in 6 until 11) {
+            val days = (0..sellIn - 6).randomize()
             val initialItemQuality = generateRandomQualityValue()
             val item = Item("Backstage passes to a TAFKAL80ETC concert", sellIn, initialItemQuality)
             val app = GildedRose(arrayOf(item))
@@ -154,8 +152,8 @@ class QualityTest : BaseTest() {
 
     @Test
     fun givenBackstagePasses_whenSellInMoreThanEleven_shouldIncreaseQualityByNumberOfDays() {
-        (11 until 999).shuffled().forEach {sellIn ->
-            val days = sellIn - 11
+        for (sellIn in 11 until 999) {
+            val days = (0..sellIn - 11).randomize()
             val initialItemQuality = generateRandomQualityValue()
             val item = Item("Backstage passes to a TAFKAL80ETC concert", sellIn, initialItemQuality)
             val app = GildedRose(arrayOf(item))

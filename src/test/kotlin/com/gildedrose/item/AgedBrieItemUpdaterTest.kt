@@ -9,17 +9,19 @@ import org.junit.Test
 class AgedBrieItemUpdaterTest : BaseTest() {
 
     private lateinit var updater: ItemUpdater
+    private lateinit var item: Item
 
     @Before
     fun setUp() {
         updater = AgedBrieItemUpdater()
+        item = Item("Aged Brie", generateRandomNumber(), generateRandomQualityValue())
     }
 
     @Test
     fun update_afterAnyNumberOfDays_shouldDecreaseSellInByNumberOfDays() {
         val days = generateRandomNumber()
         val initialSellIn = generateRandomNumber()
-        val item = Item("Aged Brie", initialSellIn, generateRandomQualityValue())
+        item = item.copy(sellIn = initialSellIn)
 
         repeat(days, { updater.update(item) })
 
@@ -28,9 +30,7 @@ class AgedBrieItemUpdaterTest : BaseTest() {
 
     @Test
     fun update_afterAnyNumberOfDays_shouldHaveQualityInLimits() {
-        (0 until 100).forEach { days ->
-            val item = Item("Aged Brie", generateRandomNumber(), generateRandomQualityValue())
-
+        for (days in 0 until 100) {
             repeat(days, { updater.update(item) })
 
             assertThat(item.quality).isBetween(0, 50)
@@ -39,25 +39,23 @@ class AgedBrieItemUpdaterTest : BaseTest() {
 
     @Test
     fun update_whenSellInGreaterOrEqualToZero_shouldIncreaseQualityByNumberOfDays() {
-        (1 until 1000).forEach { days ->
+        for (days in 1 until 1000) {
             val initialItemQuality = generateRandomNumber()
-            val sellIn = days
-            val item = Item("Aged Brie", sellIn, initialItemQuality)
+            item = item.copy(sellIn = days, quality = initialItemQuality)
 
             repeat(days, { updater.update(item) })
 
             val expectedQuality = (initialItemQuality + days).coerceAtMost(50)
-
             assertThat(item.quality).isEqualTo(expectedQuality)
         }
     }
 
     @Test
     fun update_whenSellInNegative_shouldIncreaseQualityByNumberOfDaysMultipliedByTwo() {
-        (-100 until 0).forEach { sellIn ->
+        for (sellIn in -100 until 0) {
             val days = -sellIn
             val initialItemQuality = generateRandomQualityValue()
-            val item = Item("Aged Brie", sellIn, initialItemQuality)
+            item = item.copy(sellIn = sellIn, quality = initialItemQuality)
 
             repeat(days, { updater.update(item) })
 
