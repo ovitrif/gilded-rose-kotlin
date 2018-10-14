@@ -1,21 +1,18 @@
 # Gilded Rose Refactoring Kata
 [![Build Status](https://img.shields.io/travis/com/ovitrif/gilded-rose-kotlin/master.svg)](https://travis-ci.com/ovitrif/gilded-rose-kotlin)
-[![Coverage](https://img.shields.io/codecov/c/github/ovitrif/gilded-rose-kotlin/master.svg)](https://codecov.io/gh/ovitrif/gilded-rose-kotlin) 
+[![Coverage](https://img.shields.io/codecov/c/github/ovitrif/gilded-rose-kotlin/master.svg)](https://codecov.io/gh/ovitrif/gilded-rose-kotlin)
 [![Code Quality](https://api.codacy.com/project/badge/Grade/eed75167e5614581905f4a1e161ace65)](https://www.codacy.com/app/ovitrif/gilded-rose-kotlin)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)][license-url] 
-
-![Codacy branch grade]()
-
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)][license-url]
 
 My shot at the GildedRose refactoring Kata, created by [@TerryHughes](https://twitter.com/) and ported to
-Kotlin by [@emilybache](https://twitter.com/emilybache).  
+Kotlin by [@emilybache](https://twitter.com/emilybache).
 Original requirements:
 [GildedRose-Refactoring-Kata](https://github.com/emilybache/GildedRose-Refactoring-Kata) repository.
 
 ## Build
 -  Open project with [IntelliJ IDEA Community edition](https://www.jetbrains.com/idea/download/)
--  Navigate using the Project viewer to `src > test > kotlin` 
--  Right click on '🗂 kotlin' and pick '▶️ Run all tests'
+-  Navigate using the Project viewer to `src > test > kotlin`
+-  Right click on **🗂 kotlin** and pick **▶ Run all tests**
 
 ## Limitations
 Since it is specified as a project requirement to keep the Item class unchanged,
