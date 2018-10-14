@@ -10,9 +10,9 @@ Original requirements:
 [GildedRose-Refactoring-Kata](https://github.com/emilybache/GildedRose-Refactoring-Kata) repository.
 
 ## Build
--  Open project with [IntelliJ IDEA Community edition](https://www.jetbrains.com/idea/download/)
--  Navigate using the Project viewer to `src > test > kotlin`
--  Right click on **🗂 kotlin** and pick **▶ Run all tests**
+  - Open project with [IntelliJ IDEA Community edition](https://www.jetbrains.com/idea/download/)
+  - Navigate using the Project viewer to `src > test > kotlin`
+  - Right click on **🗂 kotlin** and pick **▶ Run all tests**
 
 ## Limitations
 Since it is specified as a project requirement to keep the Item class unchanged,
